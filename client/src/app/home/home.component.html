@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <a class="navbar-brand">Welcome to Attendance System</a>
+</nav>
+
+
+<div class="container mt-4">
+ 
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <button (click)="markAttendance()" class="btn btn-primary btn-lg">Mark Attendance</button>
+            <button (click)="viewAttendance()" class="btn btn-secondary btn-lg">View Attendance</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logout-button text-center mt-4">
+    <button (click)="logout()" class="btn btn-outline-danger btn-lg">Logout</button>
+  </div>
+</div>

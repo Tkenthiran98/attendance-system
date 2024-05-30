@@ -1,0 +1,57 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .btn {
+    margin-top: 20px;
+  }
+ 
+  /* Add this to your app.component.css file */
+.navbar {
+  padding: 0.5rem 1rem;
+  font-size: 50px;
+ }
+
+.navbar-brand {
+  color: #333; /* Dark gray text color */
+  font-weight: bold; /* Make the text bold */
+}
+
+.btn-primary, .btn-secondary, .btn-outline-danger {
+  width: 200px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
