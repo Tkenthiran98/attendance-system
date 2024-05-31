@@ -49,3 +49,10 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0056b3;
 }
+.alert-danger {
+  color: red;
+}
+
+.alert-success {
+  color: green;
+}

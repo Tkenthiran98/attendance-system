@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +12,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<any> {
     return this.http.post<{ token: string }>(this.loginUrl, { username, password })
       .pipe(
-        catchError(this.handleError.bind(this))
-      )
-      .subscribe(response => {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/home']);
-      });
+        map(response => {
+          localStorage.setItem('token', response.token);
+          return response;
+        }),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -30,7 +30,7 @@ export class AuthService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     console.error(errorMessage);
     return throwError(errorMessage);
@@ -41,7 +41,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
